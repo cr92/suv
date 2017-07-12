@@ -6,4 +6,5 @@ export default function (state = {}, action) {
     case FETCH_ITEMS:
       console.log('action: ', action.payload.data);
       return _.mapKeys(action.payload.data, '_id');
+  }
 }
