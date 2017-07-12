@@ -30,4 +30,28 @@ module.exports = {
             })
             .catch(next);
     },
+
+    update: function (req, res, next) {
+        const item_id = req.params.id;
+        const item_info = req.body;
+        Item
+            .findByIdAndUpdate({
+                _id: item_id
+            }, item_info)
+            .then(() => Item.findById({
+                _id: item_id
+            }))
+            .then((item) => res.send(item))
+            .catch(next);
+    },
+
+    delete: function (req, res, next) {
+        const item_id = req.params.id;
+        Item
+            .findByIdAndRemove({
+                _id: item_id
+            })
+            .then((item) => res.status(204).send(item))
+            .catch(next);
+    }
 }
