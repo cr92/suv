@@ -11,6 +11,7 @@ import Nav from './components/nav_bar';
 import Reducers from './reducers';
 import ItemHome from './components/item_home';
 import ItemNew from './components/item_new';
+import ItemShow from './components/item_show';
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(Reducers)}>
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Switch>
 
         <Route path='/items/new' component={ItemNew}/>
+        <Route path='/items/:id' component={ItemShow}/>
         <Route path='/' component={ItemHome}/>
 
       </Switch>
