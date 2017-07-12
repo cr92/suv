@@ -10,6 +10,7 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 import Nav from './components/nav_bar';
 import Reducers from './reducers';
 import ItemHome from './components/item_home';
+import ItemNew from './components/item_new';
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(Reducers)}>
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Nav/>
       <Switch>
 
+        <Route path='/items/new' component={ItemNew}/>
         <Route path='/' component={ItemHome}/>
 
       </Switch>
