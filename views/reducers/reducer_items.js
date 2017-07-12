@@ -1,4 +1,4 @@
-import {FETCH_ITEMS, FETCH_ITEM} from '../actions/index';
+import {FETCH_ITEMS,FETCH_ITEM} from '../actions/index';
 import _ from 'lodash';
 
 export default function (state = {}, action) {
@@ -6,5 +6,11 @@ export default function (state = {}, action) {
     case FETCH_ITEMS:
       console.log('action: ', action.payload.data);
       return _.mapKeys(action.payload.data, '_id');
+
+    case FETCH_ITEM:
+      console.log('action: ', action.payload.data);
+
+    default:
+      return state;
   }
 }
