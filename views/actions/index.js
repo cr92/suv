@@ -31,7 +31,16 @@ export function fetchItem(_id) {
   const request = axios.get(`${BASE_URL}/${_id}`);
 
   return {
-    type: FETCH_POST,
+    type: FETCH_ITEM,
     payload: request
   };
+}
+
+export function deleteItem(_id, callback) {
+  const request = axios.delete(`${BASE_URL}/${_id}`).then(() => callback());
+
+  return {
+    type: DELETE_ITEM,
+    payload: _id
+  }
 }
