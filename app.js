@@ -9,6 +9,12 @@ const App = Express();
 Mongoose.Promise = global.Promise;
 Mongoose.connect('mongodb://localhost/suv');
 
+App.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 App.use(BodyParser.json());
 
 Routes(App);
