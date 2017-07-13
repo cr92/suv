@@ -4,6 +4,7 @@ export const FETCH_ITEMS = 'FETCH_ITEMS';
 export const FETCH_ITEM = 'FETCH_ITEM';
 export const CREATE_ITEM = 'CREATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const EDIT_ITEM = 'EDIT_ITEM';
 
 
 const BASE_URL = 'http://localhost:9090/api/items';
@@ -41,6 +42,15 @@ export function deleteItem(_id, callback) {
 
   return {
     type: DELETE_ITEM,
+    payload: _id
+  }
+}
+
+export function editItem(_id, values, callback) {
+  const request = axios.put(`${BASE_URL}/${_id}`, values).then(() => callback());
+
+  return {
+    type: EDIT_ITEM,
     payload: _id
   }
 }

@@ -22,7 +22,7 @@ class ItemsNew extends Component {
             <Field label='Quantity' name='quantity' component={this.renderField}/>
             <Field label='URL' name='url' component={this.renderField}/>
             <Field label='Description' name='description' component={this.renderField}/>
-            <button type='submit' className="btn btn-success">Submit</button>
+            <button type='submit' className="btn btn-success button-margin-15">Submit</button>
           </form>
           </div>
         </div>

@@ -5,7 +5,12 @@ img {
     width: 150px;
 }
 
-.img-cirle{
+.img-cirle {
     width: 200px;
     height: 200px;
+}
+
+.button-margin-15 {
+    margin-left: 0px;
+    margin-top: 15px;
 }
