@@ -14,7 +14,7 @@ class ItemHome extends Component {
   render() {
     console.log('render ', this.props.items);
     return (
-      <div className="panel panel-default">
+      <div className="panel panel-info">
         <div className="panel-heading">ITEMS LIST</div>
         <div className="panel-body">
           <ul className="list-group">
@@ -31,8 +31,8 @@ class ItemHome extends Component {
     return _.map(this.props.items, function (item) {
       index++;
       let cname = index % 2 == 0
-        ? "col-xs-2 list-group-item list-group-item-success"
-        : "col-xs-2 list-group-item list-group-item-warning"
+        ? "col-xs-2 list-group-item list-group-item-success my-border"
+        : "col-xs-2 list-group-item list-group-item-warning my-border"
       return (
         <li key={item._id} className={cname}>
           <Link to={`/items/${item._id}`}>{item.title}</Link>

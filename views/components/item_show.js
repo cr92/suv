@@ -25,7 +25,7 @@ class ItemsShow extends Component {
       );
     }
     return (
-      <div className="panel panel-default">
+      <div className="panel panel-warning">
         <div className="panel-heading">DETAILS</div>
         <div className="panel-body">
           <img

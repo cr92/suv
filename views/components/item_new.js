@@ -12,7 +12,7 @@ class ItemsNew extends Component {
     const {handleSubmit} = this.props;
     return (
 
-      <div className="panel panel-default">
+      <div className="panel panel-success">
         <div className="panel-heading">ADD DETAILS</div>
         <div className="panel-body">
         <div className="form-group">
