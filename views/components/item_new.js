@@ -11,14 +11,22 @@ class ItemsNew extends Component {
   {
     const {handleSubmit} = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onFormSubmit.bind(this))}>
-        <Field label='Title' name='title' component={this.renderField}/>
-        <Field label='Price' name='price' component={this.renderField}/>
-        <Field label='Quantity' name='quantity' component={this.renderField}/>
-        <Field label='URL' name='url' component={this.renderField}/>
-        <Field label='Description' name='description' component={this.renderField}/>
-        <button type='submit'>Submit</button>
-      </form>
+
+      <div className="panel panel-default">
+        <div className="panel-heading">ADD DETAILS</div>
+        <div className="panel-body">
+        <div className="form-group">
+          <form onSubmit={handleSubmit(this.onFormSubmit.bind(this))}>
+            <Field label='Title' name='title' component={this.renderField}/>
+            <Field label='Price' name='price' component={this.renderField}/>
+            <Field label='Quantity' name='quantity' component={this.renderField}/>
+            <Field label='URL' name='url' component={this.renderField}/>
+            <Field label='Description' name='description' component={this.renderField}/>
+            <button type='submit' className="btn btn-success">Submit</button>
+          </form>
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -38,15 +46,10 @@ class ItemsNew extends Component {
     return (
       <div>
         <label>{field.label}</label>
-        <input type='text' {...field.input}/>
+        <input type='text' {...field.input} className="form-control"/>
       </div>
     )
   }
 }
 
 export default reduxForm({form: 'ItemsNewForm'})(connect(null, {createItem})(ItemsNew));
-
-
-
-
-

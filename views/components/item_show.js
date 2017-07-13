@@ -25,20 +25,38 @@ class ItemsShow extends Component {
       );
     }
     return (
-      <div>
-        <img src={item.url} alt="X"/>
-        <div><h2>{item.title}</h2></div>
-        <div><h4>{item.price}</h4></div>
-        <div><h6>{item.quantity}</h6></div>
-        <div><h6>{item.description}</h6></div>
-        <button onClick={this.onClickDelete.bind(this)}>Delete</button>
+      <div className="panel panel-default">
+        <div className="panel-heading">DETAILS</div>
+        <div className="panel-body">
+          <img src={item.url} alt="X" className="img-circle"/>
+          <ul className="list-group col-md-2">
+            <li className="list-group-item">{item.title}</li>
+            <li className="list-group-item">{item.price}</li>
+            <li className="list-group-item">{item.quantity}</li>
+            <li className="list-group-item">{item.description}</li>
+          </ul>
+
+          <button
+            onClick={this
+            .onClickDelete
+            .bind(this)}
+            className="btn btn-danger">Delete
+          </button>
+        </div>
       </div>
     );
   }
 
-  onClickDelete(){
+  onClickDelete() {
     const id = this.props.match.params.id;
-    this.props.deleteItem(id,()=>{this.props.history.push('/')});
+    this
+      .props
+      .deleteItem(id, () => {
+        this
+          .props
+          .history
+          .push('/')
+      });
   }
 }
 
@@ -49,4 +67,4 @@ function mapStateToProps({
     item: items[ownProps.match.params.id]
   }
 }
-export default connect(mapStateToProps, {fetchItem,deleteItem})(ItemsShow);
+export default connect(mapStateToProps, {fetchItem, deleteItem})(ItemsShow);

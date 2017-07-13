@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom';
 function nav() {
   return (
     <ul className='nav'>
-      <li>
+      <li className="col-xs-2">
         <Link to='/items/new'>ADD</Link>
       </li>
-      <li>
+      <li className="col-xs-2">
         <Link to='/items'>HOME</Link>
       </li>
     </ul>
