@@ -28,7 +28,7 @@ class ItemsShow extends Component {
       <div className="panel panel-default">
         <div className="panel-heading">DETAILS</div>
         <div className="panel-body">
-          <img src={item.url} alt="X" className="img-circle"/>
+          <img src={item.url || "https://i.ytimg.com/vi/_DR4ovnkSvI/hqdefault.jpg"} className="img-circle"/>
           <ul className="list-group col-md-2">
             <li className="list-group-item">{item.title}</li>
             <li className="list-group-item">{item.price}</li>
