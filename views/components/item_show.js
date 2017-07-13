@@ -32,10 +32,10 @@ class ItemsShow extends Component {
             src={item.url || "https://i.ytimg.com/vi/_DR4ovnkSvI/hqdefault.jpg"}
             className="img-circle"/>
           <ul className="list-group col-md-2">
-            <li className="list-group-item">{item.title}</li>
-            <li className="list-group-item">{item.price}</li>
-            <li className="list-group-item">{item.quantity}</li>
-            <li className="list-group-item">{item.description}</li>
+            <li className="list-group-item"><i className="fa fa-user-circle"></i> {item.title}</li>
+            <li className="list-group-item"><i className="fa fa-bitcoin"></i> {item.price}</li>
+            <li className="list-group-item"><i className="fa fa-stack-overflow"></i> {item.quantity}</li>
+            <li className="list-group-item"><i className="fa fa-book"></i> {item.description}</li>
           </ul>
 
           <button
