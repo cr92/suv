@@ -2,11 +2,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 import {Link} from 'react-router-dom';
-import {Field, reduxForm} from 'redux-form';
+import {Field, reduxForm, initialize} from 'redux-form';
 
 import {editItem} from '../actions/index';
+import {fetchItem} from '../actions/index';
 
 class ItemsEdit extends Component {
+
+  componentDidMount() {
+    this.handleInitialize();
+  }
+
   render()
   {
     const {handleSubmit} = this.props;
@@ -45,6 +51,20 @@ class ItemsEdit extends Component {
       });
   }
 
+  handleInitialize() {
+    const initData = {
+      "title": this.props.item.title,
+      "price": this.props.item.price,
+      "quantity": this.props.item.quantity,
+      "url": this.props.item.url,
+      "description": this.props.item.description
+    };
+
+    this
+      .props
+      .initialize(initData);
+  }
+
   renderField(field) {
     return (
       <div>
@@ -55,4 +75,12 @@ class ItemsEdit extends Component {
   }
 }
 
-export default reduxForm({form: 'ItemsEditForm'})(connect(null, {editItem})(ItemsEdit));
+function mapStateToProps({
+  items
+}, ownProps) {
+  return {
+    item: items[ownProps.match.params.id]
+  }
+}
+
+export default reduxForm({form: 'ItemsEditForm'})(connect(mapStateToProps, {editItem})(ItemsEdit));
