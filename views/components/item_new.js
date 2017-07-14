@@ -15,15 +15,15 @@ class ItemsNew extends Component {
       <div className="panel panel-success">
         <div className="panel-heading">ADD DETAILS</div>
         <div className="panel-body">
-        <div className="form-group">
-          <form onSubmit={handleSubmit(this.onFormSubmit.bind(this))}>
-            <Field label='Title' name='title' component={this.renderField}/>
-            <Field label='Price' name='price' component={this.renderField}/>
-            <Field label='Quantity' name='quantity' component={this.renderField}/>
-            <Field label='URL' name='url' component={this.renderField}/>
-            <Field label='Description' name='description' component={this.renderField}/>
-            <button type='submit' className="btn btn-success button-margin-15">Submit</button>
-          </form>
+          <div className="form-group">
+            <form onSubmit={handleSubmit(this.onFormSubmit.bind(this))}>
+              <Field label='Title' name='title' component={this.renderField}/>
+              <Field label='Price' name='price' component={this.renderField}/>
+              <Field label='Quantity' name='quantity' component={this.renderField}/>
+              <Field label='URL' name='url' component={this.renderField}/>
+              <Field label='Description' name='description' component={this.renderField}/>
+              <button type='submit' className="btn btn-success button-margin-15">Submit</button>
+            </form>
           </div>
         </div>
       </div>
@@ -46,10 +46,27 @@ class ItemsNew extends Component {
     return (
       <div>
         <label>{field.label}</label>
-        <input type='text' {...field.input} className="form-control"/>
+        <input type='text' {...field.input} className="form-control"/> {field.meta.touched && field.meta.error}
       </div>
     )
   }
 }
 
-export default reduxForm({form: 'ItemsNewForm'})(connect(null, {createItem})(ItemsNew));
+function validate(values) {
+  const errors = {};
+
+  var regex = /^[0-9]*$/;
+
+  if (!values.title) {
+    errors.title = 'Title Required';
+  }
+  if (values.price && !regex.test(values.price)) {
+    errors.price = 'Only numbers are allowed';
+  }
+  if (values.quantity && !regex.test(values.quantity)) {
+    errors.quantity = 'Only numbers are allowed';
+  }
+  return errors;
+}
+
+export default reduxForm({form: 'ItemsNewForm', validate})(connect(null, {createItem})(ItemsNew));

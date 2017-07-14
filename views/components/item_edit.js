@@ -69,7 +69,7 @@ class ItemsEdit extends Component {
     return (
       <div>
         <label>{field.label}</label>
-        <input type='text' {...field.input} className="form-control"/>
+        <input type='text' {...field.input} className="form-control"/> {field.meta.touched && field.meta.error}
       </div>
     )
   }
@@ -83,4 +83,21 @@ function mapStateToProps({
   }
 }
 
-export default reduxForm({form: 'ItemsEditForm'})(connect(mapStateToProps, {editItem})(ItemsEdit));
+function validate(values) {
+  const errors = {};
+
+  var regex = /^[0-9]*$/;
+
+  if (!values.title) {
+    errors.title = 'Title Required';
+  }
+  if (values.price && !regex.test(values.price)) {
+    errors.price = 'Only numbers are allowed';
+  }
+  if (values.quantity && !regex.test(values.quantity)) {
+    errors.quantity = 'Only numbers are allowed';
+  }
+  return errors;
+}
+
+export default reduxForm({form: 'ItemsEditForm', validate})(connect(mapStateToProps, {editItem})(ItemsEdit));
