@@ -15,7 +15,7 @@ import ItemShow from './components/item_show';
 import ItemEdit from './components/item_edit';
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(Reducers)}>
+  <Provider store={createStoreWithMiddleware(Reducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
   <BrowserRouter>
     <div>
       <Nav/>
